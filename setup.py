@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name="orangefoxapi",
-    version="1.0.1",
+    version="1.0.2",
     author="MrYacha",
     author_email="yacha@orangefox.tech",
     description="Asynchronous OrangeFox Recovery API library",
