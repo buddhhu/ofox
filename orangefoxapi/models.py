@@ -36,6 +36,7 @@ class ShortMaintainer(BaseModel):
 
 
 class Device(ShortDevice):
+    url: str
     maintainer: ShortMaintainer
     ab_device: bool
     notes: Optional[str]
@@ -101,6 +102,7 @@ class ShortRelease(BaseModel):
 
 
 class Release(ShortRelease):
+    url: str
     recovery_img: RecoveryImg
     changelog: tuple
     bugs: Optional[tuple]
