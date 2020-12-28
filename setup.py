@@ -1,12 +1,14 @@
 import setuptools
 
+from orangefoxapi.version import version
+
 setuptools.setup(
     name="orangefoxapi",
-    version="1.0.2",
-    author="MrYacha",
+    version=version,
+    author="Yacha",
     author_email="yacha@orangefox.tech",
-    description="Asynchronous OrangeFox Recovery API library",
-    packages=setuptools.find_packages(),
+    description="OrangeFox Recovery API library",
+    packages=setuptools.find_packages(include=['orangefoxapi', 'orangefoxapi.*']),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -14,6 +16,10 @@ setuptools.setup(
     ],
     python_requires='>=3.8',
     install_requires=[
-        'aiohttp>=3.5.4,<4.0.0',
-    ]
+        'requests>=2.25.0',
+        'pydantic>=1.7.3'
+    ],
+    extras_require={
+        'async': ['aiohttp>=3.5.4,<4.0.0']
+    }
 )
