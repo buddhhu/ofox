@@ -4,7 +4,7 @@ build-package:
   script:
     - cat $PYPIRC > /tmp/.pypirc
     - pip install twine
-    - pip install requests aiohttp pydanic
+    - pip install pydantic
     - python setup.py bdist_wheel
     - python -m twine upload --repository gitlab dist/orangefoxapi-${CI_COMMIT_TAG}-py3-none-any.whl --config-file /tmp/.pypirc
   only:
