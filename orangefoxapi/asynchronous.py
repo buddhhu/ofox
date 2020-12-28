@@ -1,4 +1,3 @@
-import json
 import sys
 from typing import Coroutine, Optional, Union, List
 
@@ -18,20 +17,8 @@ HEADERS = {
 class OrangeFoxAsyncAPI(OrangeFoxAPI):
     cache_class: Optional[Coroutine]
 
-    def __init__(self,
-                 host: str = 'https://testapi.orangefox.tech',
-                 verify_ssl: bool = True,
-                 cache_class: Optional[Coroutine] = None,
-                 cache_expire: int = 60,
-                 json_class=json
-                 ):
-        super().__init__(
-            host=host,
-            verify_ssl=verify_ssl,
-            cache_class=None,
-            cache_expire=cache_expire,
-            json_class=json_class
-        )
+    def __init__(self, cache_class: Optional[Coroutine]):
+        super().__init__()
 
         self.cache_class = cache_class
 
