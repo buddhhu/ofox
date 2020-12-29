@@ -17,7 +17,7 @@ HEADERS = {
 class OrangeFoxAsyncAPI(OrangeFoxAPI):
     cache_class: Optional[Coroutine]
 
-    def __init__(self, cache_class: Optional[Coroutine]):
+    def __init__(self, cache_class: Optional[Coroutine] = None):
         super().__init__()
 
         self.cache_class = cache_class
@@ -86,11 +86,11 @@ class OrangeFoxAsyncAPI(OrangeFoxAPI):
 
     async def device(
             self,
-            device_id: Optional[str] = None,
+            id: Optional[str] = None,
             codename: Optional[str] = None
     ) -> Union[Device, None]:
         kwargs = build_kwargs({
-            'device_id': device_id,
+            'id': id,
             'codename': codename
         })
 
@@ -175,7 +175,21 @@ class OrangeFoxAsyncAPI(OrangeFoxAPI):
             return None
         return Release(**data)
 
-    async def updates(self, last_known_id: str) -> Updates:
-        if not (data := await self._cached_request(self._url_encode(f'/updates/{last_known_id}'))):
+    async def updates(self,
+                      last_known_id: str,
+                      device_id: Optional[Union[List[str], str]],
+                      release_type: Optional[Union[List[str], str]],
+                      skip: Optional[int] = None,
+                      limit: Optional[int] = None
+                      ) -> Updates:
+
+        kwargs = build_kwargs({
+            'device_id': device_id,
+            'release_type': release_type,
+            'skip': skip,
+            'limit': limit
+        })
+
+        if not (data := await self._cached_request(self._url_encode(f'/updates/{last_known_id}/', **kwargs))):
             return Updates(data=[], count=0)
         return Updates(**data)
