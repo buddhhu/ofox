@@ -188,8 +188,8 @@ class OrangeFoxAPI:
 
     def updates(self,
                 last_known_id: str,
-                device_id: Optional[Union[List[str], str]],
-                release_type: Optional[Union[List[str], str]],
+                device_id: Optional[Union[List[str], str]] = None,
+                release_type: Optional[Union[List[str], str]] = None,
                 skip: Optional[int] = None,
                 limit: Optional[int] = None
                 ) -> Updates:
