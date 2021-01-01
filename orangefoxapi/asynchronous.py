@@ -17,8 +17,8 @@ HEADERS = {
 class OrangeFoxAsyncAPI(OrangeFoxAPI):
     cache_class: Optional[Coroutine]
 
-    def __init__(self, cache_class: Optional[Coroutine] = None):
-        super().__init__()
+    def __init__(self, cache_class: Optional[Coroutine] = None, **kwargs):
+        super().__init__(**kwargs)
 
         self.cache_class = cache_class
 
