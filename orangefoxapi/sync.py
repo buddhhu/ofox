@@ -19,7 +19,7 @@ HEADERS = {
 # noinspection DuplicatedCode
 class OrangeFoxAPI:
     def __init__(self,
-                 host: str = 'https://testapi.orangefox.tech',
+                 host: str = 'https://api.orangefox.download/v3',
                  verify_ssl: bool = True,
                  cache_class: Optional[Callable] = None,
                  cache_expire: int = 60,
