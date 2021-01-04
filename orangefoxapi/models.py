@@ -108,6 +108,7 @@ class Release(ShortRelease):
     bugs: Optional[tuple]
     notes: Optional[str]
     mirrors: dict
+    filename: str
 
 
 class Releases(BaseModel):
