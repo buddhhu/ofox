@@ -1,3 +1,6 @@
+import enum
+
+
 def build_kwargs(kwargs) -> dict:
     result = {}
 
@@ -7,6 +10,9 @@ def build_kwargs(kwargs) -> dict:
 
         if name == 'id':
             name = '_id'
+
+        if isinstance(data, enum.Enum):
+            data = data.value
 
         if data or data is False:
             result[name] = data

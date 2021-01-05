@@ -7,6 +7,7 @@ import requests
 
 from .kwargs import build_kwargs
 from .models import Devices, Device, Maintainers, Maintainer, OEMs, Releases, Release, Updates
+from .types import ReleaseType, DevicesSort, MaintainersSort, ReleasesSort
 from .version import version
 
 HEADERS = {
@@ -76,7 +77,9 @@ class OrangeFoxAPI:
             model_name: Optional[Union[List[str], str]] = None,
             supported: Optional[Union[List[bool], bool]] = None,
             maintainer_id: Optional[Union[List[str], bool]] = None,
+            release_type: Optional[ReleaseType] = None,
             skip: Optional[int] = None,
+            sort: Optional[DevicesSort] = None,
             limit: Optional[int] = None
 
     ) -> Devices:
@@ -87,6 +90,8 @@ class OrangeFoxAPI:
             'model_name': model_name,
             'supported': supported,
             'maintainer_id': maintainer_id,
+            'release_type': release_type,
+            'sort': sort,
             'skip': skip,
             'limit': limit
         })
@@ -122,11 +127,17 @@ class OrangeFoxAPI:
     def maintainers(
             self,
             id: Optional[Union[List[str], str]] = None,
+            name: Optional[Union[List[str], str]] = None,
+            username: Optional[Union[List[str], str]] = None,
+            sort: Optional[MaintainersSort] = None,
             skip: Optional[int] = None,
             limit: Optional[int] = None
     ) -> Maintainers:
         kwargs = build_kwargs({
             'id': id,
+            'sort': sort,
+            'name': name,
+            'username': username,
             'skip': skip,
             'limit': limit
         })
@@ -155,9 +166,10 @@ class OrangeFoxAPI:
                  device_id: Optional[Union[List[str], str]] = None,
                  codename: Optional[Union[List[str], str]] = None,
                  version: Optional[Union[List[str], str]] = None,
-                 type: Optional[Union[List[str], str]] = None,
+                 type: Optional[ReleaseType] = None,
                  filename: Optional[Union[List[str], str]] = None,
                  skip: Optional[int] = None,
+                 sort: Optional[ReleasesSort] = None,
                  limit: Optional[int] = None
                  ) -> Releases:
         kwargs = build_kwargs({
@@ -167,6 +179,7 @@ class OrangeFoxAPI:
             'version': version,
             'type': type,
             'filename': filename,
+            'sort': sort,
             'skip': skip,
             'limit': limit
         })

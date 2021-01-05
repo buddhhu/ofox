@@ -1,6 +1,7 @@
 import asyncio
 
 from orangefoxapi import OrangeFoxAsyncAPI
+from orangefoxapi.types import ReleaseType
 
 api = OrangeFoxAsyncAPI()
 
@@ -12,7 +13,7 @@ async def get_devices_ids():
 
 
 async def get_latest_release():
-    latest_release = (await api.releases(limit=1)).data[0]
+    latest_release = (await api.releases(limit=1, type=ReleaseType.stable)).data[0]
     release = await api.release(id=latest_release.id)
     print(release)
 
