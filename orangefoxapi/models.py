@@ -38,7 +38,7 @@ class ShortMaintainer(BaseModel):
 class Device(ShortDevice):
     url: str
     maintainer: ShortMaintainer
-    ab_device: bool
+    # ab_device: bool
     notes: Optional[str]
 
 
