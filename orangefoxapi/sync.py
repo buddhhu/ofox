@@ -45,7 +45,7 @@ class OrangeFoxAPI:
                 raise ValueError(f"{r.status_code}: {r.text}")
 
     def _decode_request(self, data: Union[str, None]) -> Union[dict, None]:
-        if not data:
+        if not data or data == 'None':
             return None
 
         return self.json_class.loads(data)
