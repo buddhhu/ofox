@@ -61,7 +61,7 @@ class OrangeFoxAPI:
         self.cache_class.set(api_method, data)
         self.cache_class.expire(api_method, self.cache_expire)
 
-        return self._decode_request(cached)
+        return self._decode_request(data)
 
     @staticmethod
     def _url_encode(api_method: str, **kwargs):

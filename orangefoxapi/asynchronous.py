@@ -50,7 +50,7 @@ class OrangeFoxAsyncAPI(OrangeFoxAPI):
         await self.cache_class.set(api_method, data)
         await self.cache_class.expire(api_method, self.cache_expire)
 
-        return self._decode_request(cached)
+        return self._decode_request(data)
 
     def close(self):
         if self.session is not None:
