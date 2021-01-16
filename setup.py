@@ -17,7 +17,7 @@ setuptools.setup(
     python_requires='>=3.8',
     install_requires=[
         'requests>=2.25.0',
-        'pydantic>=1.7.3'
+        'pydantic'
     ],
     extras_require={
         'async': ['aiohttp>=3.5.4,<4.0.0']
