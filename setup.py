@@ -1,4 +1,4 @@
-import setuptools
+import setuptools, re
 
 with open("orangefoxapi/version.py", "rt", encoding="utf8") as x:
     version = re.search(r"version = '(.*?)'", x.read()).group(1)
