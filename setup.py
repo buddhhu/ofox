@@ -17,7 +17,7 @@ setuptools.setup(
     ],
     python_requires='>=3.8',
     install_requires=[
-        'requests>=2.25.0',
+        'requests',
         'pydantic'
     ],
     extras_require={
